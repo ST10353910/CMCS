@@ -1,0 +1,73 @@
+﻿<Window x:Class="CMCS.LecturerDashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Lecturer Dashboard" Height="450" Width="800"
+        Background="#F0F0F0">
+    <Grid>
+        <Grid.Resources>
+            <!-- Style for Menu -->
+            <Style TargetType="Menu">
+                <Setter Property="Background" Value="#0044CC"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+            </Style>
+            <Style TargetType="MenuItem">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Padding" Value="15,5"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+            <!-- Style for Buttons -->
+            <Style TargetType="Button">
+                <Setter Property="Background" Value="#00BFFF"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Padding" Value="10,5"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+
+        <!-- Menu bar -->
+        <Menu VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="40">
+            <MenuItem Header="Home" />
+            <MenuItem Header="Submit Claim" Click="SubmitClaim_Click" />
+            <MenuItem Header="Track Claim" Click="TrackClaim_Click" />
+            <MenuItem Header="Claims Approval" Click="ClaimsApproval_Click" />
+            <MenuItem Header="Logout" Click="Logout_Click" />
+        </Menu>
+
+        <!-- Center button for submitting a new claim -->
+        <Button Content="Submit New Claim" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="50" Click="SubmitClaim_Click"/>
+
+        <!-- ListBox for tracking claims -->
+        <ListBox x:Name="TrackClaimListBox" VerticalAlignment="Bottom" Height="150" Margin="10,0,10,10">
+            <!-- Items will be dynamically added in the code-behind -->
+        </ListBox>
+
+        <!-- TextBlock to display claim statuses -->
+        <TextBlock x:Name="ClaimStatusTextBlock" VerticalAlignment="Top" Margin="10,70,10,0" FontSize="16" FontWeight="Bold" Visibility="Collapsed"/>
+
+        <!-- Button for uploading documents -->
+        <Button Content="Upload Documents" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="150" Margin="10" Click="UploadDocuments_Click"/>
+    </Grid>
+</Window>
